@@ -1,0 +1,83 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rabbitmq
+  labels:
+    app: rabbitmq
+    author: estherterrero
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: rabbitmq
+      author: estherterrero
+  replicas: 1 # tells deployment to run 1 pods matching the template
+  template: # create pods using pod definition in this template
+    metadata:
+      labels:
+        app: rabbitmq
+        author: estherterrero
+    spec:
+      containers:      
+      - name: rabbitmq
+        image: rabbitmq:3.8-management 
+        ports:
+        - containerPort: 5672
+          name: ampq
+        - containerPort: 61613
+          name: stomp
+        - containerPort: 15672
+          name: http
+          
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rabbitmq
+  labels:
+    app: rabbitmq
+    author: estherterrero
+spec:
+  ports:
+  - port: 5672
+    protocol: TCP
+  selector:
+    app: rabbitmq
+    author: estherterrero
+  type: ClusterIP
+  
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rabbitmqstomp
+  labels:
+    app: rabbitmq
+    author: estherterrero
+spec:
+  ports:
+  - port: 61613
+    protocol: TCP
+  selector:
+    app: rabbitmq
+    author: estherterrero
+  type: ClusterIP
+  
+---
+spiVersion: v1
+kind: Service
+metadata:
+  name: rabbitmqmanagement
+  labels:
+    app: rabbitmq
+    author: estherterrero
+spec:
+  ports:
+  - port: 15672
+    protocol: TCP
+  selector:
+    app: rabbitmq
+    author: estherterrero
+  type: NodePort

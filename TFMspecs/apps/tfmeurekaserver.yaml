@@ -1,0 +1,44 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tfmeurekaserver
+  labels:
+    app: tfmeurekaserver
+    author: estherterrero
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: tfmeurekaserver
+      author: estherterrero
+  replicas: 1 # tells deployment to run 1 pods matching the template
+  template: # create pods using pod definition in this template
+    metadata:
+      labels:
+        app: tfmeurekaserver
+        author: estherterrero
+    spec:
+      containers:      
+      - name: tfmeurekaserver
+        image: a888e7afefe3:v1
+        ports:
+        - containerPort: 8761
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tfmeurekaserver
+  labels:
+    app: tfmeurekaserver
+    author: estherterrero
+spec:
+  ports:
+  - port: 8761
+    protocol: TCP
+  selector:
+    app: tfmeurekaserver
+    author: estherterrero
+  type: ClusterIP

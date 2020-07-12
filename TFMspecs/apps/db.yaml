@@ -1,0 +1,61 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db
+  labels:
+    app: db
+    author: estherterrero
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: db
+      author: estherterrero
+  replicas: 1 # tells deployment to run 1 pods matching the template
+  template: # create pods using pod definition in this template
+    metadata:
+      labels:
+        app: db
+        author: estherterrero
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:5.6
+        ports:
+        - containerPort: 3306
+        volumeMounts:
+        - mountPath: "/C//Users/eceetdc/Documents"
+          name: db-storage
+        env:
+        - name: MYSQL_USER
+          value: esther
+        - name: MYSQL_PASSWORD
+          value: terrero
+        - name: MYSQL_ROOT_PASSWORD
+          value: pass
+        - name: MYSQL_DATABASE
+          value: test
+      volumes:
+        - name: db-storage
+          persistentVolumeClaim:
+            claimName: mysql-pv-claim
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: db
+  labels:
+    app: db
+    author: estherterrero
+spec:
+  ports:
+  - port: 3306
+    protocol: TCP
+    name: db-port
+  selector:
+    app: db
+    author: estherterrero
+  type: ClusterIP

@@ -1,0 +1,44 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tfmbingogame
+  labels:
+    app: tfmbingogame
+    author: estherterrero
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: tfmbingogame
+      author: estherterrero
+  replicas: 1 # tells deployment to run 1 pods matching the template
+  template: # create pods using pod definition in this template
+    metadata:
+      labels:
+        app: tfmbingogame
+        author: estherterrero
+    spec:
+      containers:      
+      - name: tfmbingogame
+        image: 2d64a9ea9edd:v1
+        ports:
+        - containerPort: 8086
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tfmbingogame
+  labels:
+    app: tfmbingogame
+    author: estherterrero
+spec:
+  ports:
+  - port: 8086
+    protocol: TCP
+  selector:
+    app: tfmbingogame
+    author: estherterrero
+  type: LoadBalancer
