@@ -22,9 +22,9 @@ spec:
     spec:
       containers:      
       - name: tfmbingogame
-        image: 2d64a9ea9edd:v1
+        image: d8ec37cbe597:v1
         ports:
-        - containerPort: 8086
+        - containerPort: 8081
 
 ---
 apiVersion: v1
@@ -36,9 +36,9 @@ metadata:
     author: estherterrero
 spec:
   ports:
-  - port: 8086
+  - port: 8081
     protocol: TCP
   selector:
     app: tfmbingogame
     author: estherterrero
-  type: LoadBalancer
+  type: ClusterIP

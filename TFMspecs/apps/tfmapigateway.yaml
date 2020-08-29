@@ -22,7 +22,7 @@ spec:
     spec:
       containers:      
       - name: tfmapigateway
-        image: 87fae3465fef:v1
+        image: 11055fb4dec0:v1
         ports:
         - containerPort: 8080
 

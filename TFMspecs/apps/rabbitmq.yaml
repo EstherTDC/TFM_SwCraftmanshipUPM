@@ -22,7 +22,8 @@ spec:
     spec:
       containers:      
       - name: rabbitmq
-        image: rabbitmq:3.8-management 
+#        image: rabbitmq:3.8-management
+        image: 25b31ab85125:v1 
         ports:
         - containerPort: 5672
           name: ampq
@@ -59,6 +60,23 @@ metadata:
 spec:
   ports:
   - port: 61613
+    protocol: TCP
+  selector:
+    app: rabbitmq
+    author: estherterrero
+  type: ClusterIP
+  
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rabbitmqwebstomp
+  labels:
+    app: rabbitmq
+    author: estherterrero
+spec:
+  ports:
+  - port: 15674
     protocol: TCP
   selector:
     app: rabbitmq
