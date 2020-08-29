@@ -1,0 +1,44 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tfmusermgtserver
+  labels:
+    app: tfmusermgtserver
+    author: estherterrero
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: tfmusermgtserver
+      author: estherterrero
+  replicas: 1 # tells deployment to run 1 pods matching the template
+  template: # create pods using pod definition in this template
+    metadata:
+      labels:
+        app: tfmusermgtserver
+        author: estherterrero
+    spec:
+      containers:      
+      - name: tfmusermgtserver
+        image: 56d2251cb707:v1  
+        ports:
+        - containerPort: 8082
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tfmusermgtserver
+  labels:
+    app: tfmusermgtserver
+    author: estherterrero
+spec:
+  ports:
+  - port: 8082
+    protocol: TCP
+  selector:
+    app: tfmusermgtserver
+    author: estherterrero
+  type: ClusterIP

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MasterBingo</title>
+  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="data:,">
+  
+</head>
+
+<body>
+  <div>
+    <div id="gameId" data-myval={{gameId}}></div>
+    <div id="gameName" data-myval={{gameName}}></div>
+    <div id="playerId" data-myval={{playerId}}></div>
+    <div id ="playerName" data-myval={{playerName}}></div>
+  </div>
+  
+  <div><img src="/img/BINGO.png" alt="Bingo" height="55px" style="position:absolute; top:0; right:0;"></div>
+
+  <!--================Hero Banner Area Start =================-->
+  <section>
+    <div>
+      <div id="frame">
+        <h2>Jugador: {{playerName}}</h2>
+        <div id="containers-area" class="row">
+        
+          <!-- Free Tier1 -->
+          <div class="bingo-container control-panel{{gameType}} mb-5 mb-lg-0 mx-auto">
+            <h2 class="text-uppercase text-center">Panel de control</h2>
+            <div id="controlBoard" class="rTable card-body mx-auto"> </div>
+          </div>
+          
+          <div class="bingo-container ball-panel mb-5 mb-lg-0 mx-auto">
+             <h2 class="text-uppercase text-center"> 4 Últimas bolas</h2>
+             <div id="lastNumbers" class="mx-auto"> </div>
+             <hr>
+             <h2 class="text-uppercase text-center"> Nueva bola</h2>
+             <div id="newNumber" class="ballBackground ballBackgroundWhite mx-auto"></div>   
+          </div>
+          
+          <div id="userCardsArea" class="bingo-container card-panel mx-auto col-lg-5 mb-5 mb-lg-0">
+            <h2 class="card-title text-uppercase text-center">Tus cartones</h2>
+            <span>Marcado automático de los cartones </span><input id="automaticMarking" type="checkbox">
+          </div>           
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!--================Hero Banner Area End =================-->
+  
+   
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+  <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/timer.jquery/0.9.0/timer.jquery.js"></script>
+  <script src="/indexScriptFinal.js"></script>
+  <script src="/indexScript{{gameType}}Final.js"></script>
+  <script src="/{{role}}ScriptFinal.js"></script>
+  </body>
+</html>
+
