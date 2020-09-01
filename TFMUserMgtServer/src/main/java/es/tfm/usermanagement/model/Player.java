@@ -22,8 +22,6 @@ public class Player implements Comparable<Player>{
 	
 	private String playerName;
 	
-//	@ManyToOne
-//	private GameUser myUser;
 	
 	@ManyToOne
 	private UserGroup myGroup;
@@ -48,26 +46,21 @@ public class Player implements Comparable<Player>{
 		return id;
 	}
 
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
 	
 	public void setPlayerName(String playerName) {
 		this.playerName = playerName;
 	}
 	
+	
 	public String getPlayerName() {
 		return playerName;
 	}
 
-//	@JsonIgnore
-//	public GameUser getMyUser() {
-//		return myUser;
-//	}
-//	
-//	public void setUser(GameUser gameUser) {
-//		this.myUser = gameUser;
-//	}
 	
 	@JsonIgnore
 	public UserGroup getMygroup() {
@@ -78,18 +71,22 @@ public class Player implements Comparable<Player>{
 		this.myGroup = userGroup;
 	}
 
+	
 	public Integer getPoints() {
 		return points;
 	}
 
+	
 	public void setPoints(Integer points) {
 		this.points = points;
 	}
+	
 	
 	public boolean getIsGroupAdmin() {
 		return isGroupAdmin;
 	}
 
+	
 	public void setIsGroupAdmin(boolean isGroupAdmin) {
 		this.isGroupAdmin = isGroupAdmin;
 	}
@@ -99,10 +96,12 @@ public class Player implements Comparable<Player>{
         return this.getPoints().compareTo(o.getPoints());
     }
     
+    
 	@JsonIgnore
 	public List<Game> getMyGames() {
 		return myGames;
 	}
+	
 	
 	public void setMyGames(List<Game> myGames) {
 		this.myGames = myGames;

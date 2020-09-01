@@ -22,7 +22,7 @@ spec:
     spec:
       containers:      
       - name: tfmbingogame
-        image: d8ec37cbe597:v1
+        image: a784d6614237:v1
         ports:
         - containerPort: 8081
 

@@ -37,7 +37,7 @@ public class BingoGame75Balls extends BingoGame{
 		} else {
 		    this.balls.retainAll(balls);
 		    this.balls.addAll(balls);
-		}		
+		}	
 	}
 	
 	

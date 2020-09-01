@@ -127,7 +127,7 @@ public class BingoEventController {
     	    this.template.convertAndSend("/topic/"+gameId, newNumber);
     	    
 		}catch (ExceptionErrorInApp e) {
-	    	sendNotificationToUser(principal,"ERROR",e.getMessage());
+	    	sendNotificationToUser(principal,"",e.getMessage());
         }
 	}
 	

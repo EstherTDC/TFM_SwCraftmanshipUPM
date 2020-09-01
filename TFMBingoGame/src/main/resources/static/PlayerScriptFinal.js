@@ -37,7 +37,7 @@
 	     	    var messageToShow = JSON.parse(message.body);
       	
 	        	console.log("Start Notification Message: "+messageToShow.message);
-	        	tempAlert(messageToShow.message,2000,50,2);
+	        	tempAlert(messageToShow.message,2000,50,6);
 	        });
 	        
 	        
@@ -47,7 +47,7 @@
 	   		    var messageToShow = JSON.parse(message.body);
 	        	        	
 	        	console.log("Stop Notification Message: "+messageToShow.message);
-	        	tempAlert(messageToShow.message,2000,50,2);
+	        	tempAlert(messageToShow.message,2000,45,6);
 	        });
 	        
 		    
@@ -58,7 +58,7 @@
 	   		    var messageToShow = JSON.parse(message.body);
         	
 	        	console.log("Minor Prize Claimed Notification Message: "+messageToShow.message);
-	        	tempAlert(messageToShow.message,2000,30,2);
+	        	tempAlert(messageToShow.message,2000,15,6);
 	        });
 	        
 	        
@@ -67,7 +67,9 @@
 	   		    var messageToShow = JSON.parse(message.body);
         	
 	        	console.log("Bingo Claimed Notification Message: "+messageToShow.message);
-	        	tempAlert(messageToShow.message,10000,50,2);
+	        	tempAlert(messageToShow.message,10000,30,6);
+	        	
+            	disconnect();
 	        });
 	        
 	        
@@ -75,7 +77,7 @@
 	   		    var messageToShow = JSON.parse(message.body);
         	
 	        	console.log("Personal Notification Message: "+messageToShow.message);
-	        	tempAlert(messageToShow.message,2000,50,10);
+	        	tempAlert(messageToShow.message,2000,50,90);
 	        },{'auto-delete': true});
 	         
 	    });

@@ -143,6 +143,7 @@
 	 
 	 function fillInCard(player,cardNumber){
 	     var counter = 0;
+	    
  	     for (var i = 0 ; i < CARD_ROWS ; i++){
             var rowCards = document.getElementById(ROW_IN_CARD+cardNumber+""+i);
  		 
@@ -289,8 +290,7 @@
 	 
      function tempAlert(msg,duration,x,y){
          var element = document.createElement("div");
-         element.setAttribute("style","position:absolute;top:"+y+"%;left:"+x+"%;"+
-        		                      "background-color:white;"+
+         element.setAttribute("style","position:absolute;left:"+x+"%;top:"+y+"%;"+
         		                      "font-size:30px;color:black;text-transform: uppercase;");
          element.innerHTML = msg;
          setTimeout(function(){

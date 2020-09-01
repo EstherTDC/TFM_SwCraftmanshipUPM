@@ -140,7 +140,6 @@
 			 $(JQ_DIAGONAL_BUTTON+cardNumber).prop('disabled',true);
 		 }
 		 
-		 console.log ("Tarjeta: "+cardNumber+" Líneas completas: "+markedLines);
 		 var bingoDisabled = (markedLines == CARD_ROWS)?
 				 $(JQ_BINGO_BUTTON+cardNumber).prop('disabled',false):$(JQ_BINGO_BUTTON+cardNumber).prop('disabled',true);	 
 	 }

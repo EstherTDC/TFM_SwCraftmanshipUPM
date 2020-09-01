@@ -15,6 +15,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderColumn;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -35,6 +36,7 @@ public abstract class BingoCard {
 	@ManyToOne
 	private BingoGame bingoGame;
 
+	@OrderColumn
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(orphanRemoval = true, cascade=CascadeType.ALL)
 	protected List<Square> squares;
@@ -203,7 +205,7 @@ public abstract class BingoCard {
 		List<Square> listOfSquares = new ArrayList<Square>();
 		
 		for (int i = bingoLimits.getMinRow(); i<=bingoLimits.getMaxRow(); i++) {
-  		    for (int j= bingoLimits.getMinColumn(); j<=bingoLimits.getMaxColumn(); j++) {
+  		    for (int j= bingoLimits.getMinRow(); j<=bingoLimits.getMaxColumn(); j++) {
   		    	listOfSquares.add(provideSquare(i,j,card.get(new Coordinate(i,j))));			  
 		    }
 	    }
@@ -211,7 +213,7 @@ public abstract class BingoCard {
 		bingoCard.setSquares(listOfSquares);
 		bingoCard.setBingoGame(game);
 		bingoCard.setId(game.getGroupName()+"_"+game.getGameName()+"_"+bingoCard.cardNumbersToString());
-
+		
 		return bingoCard;
 	}
 	

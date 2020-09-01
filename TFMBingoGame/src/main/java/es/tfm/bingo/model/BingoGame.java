@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderColumn;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -34,6 +35,7 @@ public abstract class BingoGame {
 	protected boolean minorPrizeAlreadyClaimed;
 	protected boolean minorPrizeNoLongerAvailable;
 	
+	@OrderColumn
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(orphanRemoval = true, cascade=CascadeType.ALL)
 	protected List<Ball> balls;
@@ -151,7 +153,6 @@ public abstract class BingoGame {
 
 	
 	public void setPlayers(List<Player> players) {
-		this.players = players;
 		if (this.players == null) {
 		    this.players = players;
 		} else {
@@ -200,7 +201,7 @@ public abstract class BingoGame {
 				else
 				   markedNumbersInLine++;
 			}
-						
+					
 			if (markedNumbersInLine == bingoLimits.getMaxColumn()) {
 				minorPrizeAlreadyClaimed = true;
 				return true;

@@ -96,7 +96,6 @@ public class GroupService extends UserManagementService{
 		
 		Player player = new Player(savedUser.getUserName());
 		player.setGroup(savedGroup);
-//		player.setUser(savedUser);
 				
 		return playerRepository.save(player);
 	}
@@ -119,7 +118,6 @@ public class GroupService extends UserManagementService{
  			throw new ExceptionErrorInApp(Result.PLAYER_CANNOT_BE_DELETED_FROM_GROUP_IS_GAME_ADMIN);
 		
 		playerToRemove.getMygroup();
-//		playerToRemove.getMyUser();
 		playerToRemove.getMyGames().size();
 		
 		playerRepository.deleteById(playerId); 
